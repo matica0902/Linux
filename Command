@@ -1,0 +1,19 @@
+##grep
+grep -n 'the' regular_express.txt
+
+
+##AWK
+
+(EX1)cat /etc/passwd | awk '{FS=":"} $3 < 10 {print $1 "\t " $3}'  #以":"為分隔 之後查只要每一行的第三欄<10 就印出第1,3 兩欄
+
+(EX2)grep -n 'c' bbcut1001.txt|awk -F" " '{print $3}'  #waring "" 是錯的  要空一格" " 才是以空格為分界
+
+NF	每一行 ($0) 擁有的欄位總數
+NR	目前 awk 所處理的是『第幾行』資料
+FS	目前的分隔字元，預設是空白鍵
+
+dmtsai@study ~]$ cat pay.txt | \       #連結下一段指令 使用 "\"
+> awk '{if(NR==1) printf "%10s %10s %10s %10s %10s\n",$1,$2,$3,$4,"Total"}  #用' ' 架構Script 且用enter 代替 ;
+> NR>=2{total = $2 + $3 + $4                                                #NR 代表第幾欄 
+> printf "%10s %10d %10d %10d %10.2f\n", $1, $2, $3, $4, total}'            #printf "%10s",$1 格式化印出 $1 
+你可以仔細的比對一下上面兩個輸入有啥不同～
