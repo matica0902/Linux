@@ -17,3 +17,11 @@ dmtsai@study ~]$ cat pay.txt | \       #連結下一段指令 使用 "\"
 > NR>=2{total = $2 + $3 + $4                                                #NR 代表第幾欄 
 > printf "%10s %10d %10d %10d %10.2f\n", $1, $2, $3, $4, total}'            #printf "%10s",$1 格式化印出 $1 
 你可以仔細的比對一下上面兩個輸入有啥不同～
+
+
+
+
+##Grep 與 Find 檔案結合
+EX:  grep '\*' $(find / -type f 2> /dev/null )
+(1)grep '\*'  是將目地檔案中含有*字元找出 \是跳脫字元
+(2)$(find / -type f 2> /dev/null ) 是找出所有根目錄下的檔案 
